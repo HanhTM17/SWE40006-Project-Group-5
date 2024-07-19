@@ -26,6 +26,9 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
+      - name: Print working directory
+        run: echo Working Directory: %CD%  # For Windows
+
       - name: dotnet publish
         run: dotnet publish -c Release -property:PublishDir=C:\\Program Files\\dotnet\\SampleWebApp
 
