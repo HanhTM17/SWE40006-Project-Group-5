@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  PublishDir: C:\\Program Files\\dotnet\\SampleWebApp
+
 jobs:
   build:
     runs-on: windows-latest
@@ -32,13 +35,13 @@ jobs:
 
       - name: dotnet publish
         run: |
-          dotnet publish -c Release -property:PublishDir=C:\\Program Files\\dotnet\\SampleWebApp SampleWebApp.csproj
+          dotnet publish -c Release -property:PublishDir=${{ env.PublishDir }} SampleWebApp.csproj
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: C:\\Program Files\\dotnet\\SampleWebApp
+          path: ${{ env.PublishDir }}
 
   deploy:
     runs-on: windows-latest
