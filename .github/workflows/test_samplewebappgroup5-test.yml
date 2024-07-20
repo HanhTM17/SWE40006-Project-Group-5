@@ -62,5 +62,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: "samplewebappgroup5-test"
-          slot-name: "Test"
+          #slot-name: "Test"
           package: .
